@@ -21,7 +21,7 @@ Una aplicación moderna de gestión de usuarios construida con Angular 17+, util
 - **Angular Material 21**: Componentes de UI
 - **Signals**: Sistema de reactividad de Angular
 - **RxJS**: Para operaciones asíncronas
-- **Jasmine/Karma**: Framework de pruebas
+- **Jest**: Framework de pruebas
 - **SCSS**: Preprocesador CSS
 
 ## 📁 Estructura del Proyecto
