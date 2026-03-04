@@ -4,7 +4,7 @@ import com.crud.users.application.dto.UpdateUserDto;
 import com.crud.users.application.dto.UserResponseDto;
 import com.crud.users.application.mapper.UserDtoMapper;
 import com.crud.users.application.port.in.UpdateUserUseCase;
-import com.crud.users.application.port.out.UserRepositoryPort;
+import com.crud.users.domain.port.out.UserRepositoryPort;
 import com.crud.users.domain.exception.EmailAlreadyExistsException;
 import com.crud.users.domain.exception.UserNotFoundException;
 import com.crud.users.domain.model.User;

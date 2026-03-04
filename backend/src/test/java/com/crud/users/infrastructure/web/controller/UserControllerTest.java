@@ -1,4 +1,4 @@
-package com.crud.users.presentation.controller;
+package com.crud.users.infrastructure.web.controller;
 
 import com.crud.users.application.dto.CreateUserDto;
 import com.crud.users.application.dto.UpdateUserDto;
@@ -11,7 +11,7 @@ import com.crud.users.application.port.in.SearchUsersUseCase;
 import com.crud.users.application.port.in.UpdateUserUseCase;
 import com.crud.users.domain.exception.EmailAlreadyExistsException;
 import com.crud.users.domain.exception.UserNotFoundException;
-import com.crud.users.presentation.exception.GlobalExceptionHandler;
+import com.crud.shared.exception.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

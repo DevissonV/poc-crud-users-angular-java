@@ -1,4 +1,4 @@
-package com.crud.users.presentation.exception;
+package com.crud.shared.exception;
 
 import java.time.LocalDateTime;
 import java.util.Map;

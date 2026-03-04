@@ -1,6 +1,6 @@
 package com.crud.users.application.usecase;
 
-import com.crud.users.application.port.out.UserRepositoryPort;
+import com.crud.users.domain.port.out.UserRepositoryPort;
 import com.crud.users.domain.exception.UserNotFoundException;
 import com.crud.users.domain.model.User;
 import org.junit.jupiter.api.BeforeEach;

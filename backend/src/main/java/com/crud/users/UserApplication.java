@@ -1,4 +1,4 @@
-package com.crud.users.presentation;
+package com.crud.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * Clase principal de la aplicación Spring Boot.
  */
 @SpringBootApplication
-@ComponentScan(basePackages = "com.crud.users")
+@ComponentScan(basePackages = {"com.crud.users", "com.crud.shared"})
 @EntityScan(basePackages = "com.crud.users.infrastructure.persistence.entity")
 @EnableJpaRepositories(basePackages = "com.crud.users.infrastructure.persistence.repository")
 public class UserApplication {

@@ -4,7 +4,7 @@ import com.crud.users.application.dto.CreateUserDto;
 import com.crud.users.application.dto.UserResponseDto;
 import com.crud.users.application.mapper.UserDtoMapper;
 import com.crud.users.application.port.in.CreateUserUseCase;
-import com.crud.users.application.port.out.UserRepositoryPort;
+import com.crud.users.domain.port.out.UserRepositoryPort;
 import com.crud.users.domain.exception.EmailAlreadyExistsException;
 import com.crud.users.domain.model.User;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.crud.users.presentation.controller;
+package com.crud.users.infrastructure.web.controller;
 
 import com.crud.users.application.dto.CreateUserDto;
 import com.crud.users.application.dto.UpdateUserDto;
@@ -9,7 +9,7 @@ import com.crud.users.application.port.in.GetAllUsersUseCase;
 import com.crud.users.application.port.in.GetUserByIdUseCase;
 import com.crud.users.application.port.in.SearchUsersUseCase;
 import com.crud.users.application.port.in.UpdateUserUseCase;
-import com.crud.users.presentation.response.ApiResponse;
+import com.crud.shared.response.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

@@ -3,7 +3,7 @@ package com.crud.users.application.usecase;
 import com.crud.users.application.dto.UserResponseDto;
 import com.crud.users.application.mapper.UserDtoMapper;
 import com.crud.users.application.port.in.SearchUsersUseCase;
-import com.crud.users.application.port.out.UserRepositoryPort;
+import com.crud.users.domain.port.out.UserRepositoryPort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,4 +1,4 @@
-package com.crud.users.presentation.response;
+package com.crud.shared.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.time.LocalDateTime;

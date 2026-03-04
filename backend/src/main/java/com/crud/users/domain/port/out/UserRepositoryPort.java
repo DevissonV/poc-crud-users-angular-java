@@ -1,4 +1,4 @@
-package com.crud.users.application.port.out;
+package com.crud.users.domain.port.out;
 
 import com.crud.users.domain.model.User;
 
@@ -7,7 +7,8 @@ import java.util.Optional;
 
 /**
  * Puerto de salida (output port) para la persistencia de usuarios.
- * Define el contrato que la capa de aplicación impone a la infraestructura.
+ * Definido por el dominio: especifica qué necesita del exterior sin conocer
+ * ningún detalle de infraestructura.
  * Implementado por el adaptador UserRepositoryAdapter en la capa de infraestructura.
  */
 public interface UserRepositoryPort {

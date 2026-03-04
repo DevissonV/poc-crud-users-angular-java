@@ -1,6 +1,6 @@
 package com.crud.users.infrastructure.persistence.repository;
 
-import com.crud.users.application.port.out.UserRepositoryPort;
+import com.crud.users.domain.port.out.UserRepositoryPort;
 import com.crud.users.domain.model.User;
 import com.crud.users.infrastructure.persistence.mapper.UserEntityMapper;
 import org.springframework.stereotype.Component;

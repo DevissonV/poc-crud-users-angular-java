@@ -3,7 +3,7 @@ package com.crud.users.application.usecase;
 import com.crud.users.application.dto.CreateUserDto;
 import com.crud.users.application.dto.UserResponseDto;
 import com.crud.users.application.mapper.UserDtoMapper;
-import com.crud.users.application.port.out.UserRepositoryPort;
+import com.crud.users.domain.port.out.UserRepositoryPort;
 import com.crud.users.domain.exception.EmailAlreadyExistsException;
 import com.crud.users.domain.model.User;
 import org.junit.jupiter.api.BeforeEach;

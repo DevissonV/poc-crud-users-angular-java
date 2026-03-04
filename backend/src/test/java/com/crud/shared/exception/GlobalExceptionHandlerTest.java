@@ -1,9 +1,9 @@
-package com.crud.users.presentation.exception;
+package com.crud.shared.exception;
 
 import com.crud.users.domain.exception.EmailAlreadyExistsException;
 import com.crud.users.domain.exception.UserNotFoundException;
-import com.crud.users.presentation.response.ApiResponse;
-import com.crud.users.presentation.response.ErrorData;
+import com.crud.shared.response.ApiResponse;
+import com.crud.shared.response.ErrorData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;

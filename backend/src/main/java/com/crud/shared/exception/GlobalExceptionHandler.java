@@ -1,9 +1,9 @@
-package com.crud.users.presentation.exception;
+package com.crud.shared.exception;
 
 import com.crud.users.domain.exception.EmailAlreadyExistsException;
 import com.crud.users.domain.exception.UserNotFoundException;
-import com.crud.users.presentation.response.ApiResponse;
-import com.crud.users.presentation.response.ErrorData;
+import com.crud.shared.response.ApiResponse;
+import com.crud.shared.response.ErrorData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
