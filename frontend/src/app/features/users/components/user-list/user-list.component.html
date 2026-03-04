@@ -1,0 +1,127 @@
+<!-- 
+  Template para listar usuarios
+  
+  Muestra cards modernos con todos los usuarios del sistema.
+  Incluye estado vacío cuando no hay usuarios y botón FAB para crear.
+-->
+
+<div class="user-list-container">
+  <!-- Header con estadísticas -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-text">
+        <h1 class="page-title">
+          <mat-icon class="title-icon">people</mat-icon>
+          Listado de Usuarios
+        </h1>
+        <p class="page-subtitle">
+          @if (hasUsers()) {
+            <span class="user-count">{{ users().length }} usuario{{ users().length !== 1 ? 's' : '' }} registrado{{ users().length !== 1 ? 's' : '' }}</span>
+          } @else {
+            <span>No hay usuarios registrados</span>
+          }
+        </p>
+      </div>
+      @if (hasUsers()) {
+        <button mat-raised-button color="primary" class="add-button" (click)="createUser()">
+          <mat-icon>add</mat-icon>
+          Nuevo Usuario
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Estado vacío -->
+  @if (!hasUsers()) {
+    <div class="empty-state fade-in">
+      <div class="empty-icon-wrapper">
+        <mat-icon class="empty-icon">people_outline</mat-icon>
+      </div>
+      <h2>No hay usuarios registrados</h2>
+      <p>Comienza creando tu primer usuario y gestiona tu base de datos local</p>
+      <button mat-raised-button color="primary" class="empty-action-button" (click)="createUser()">
+        <mat-icon>add</mat-icon>
+        Crear Primer Usuario
+      </button>
+    </div>
+  }
+
+  <!-- Grid de cards de usuarios -->
+  @if (hasUsers()) {
+    <div class="users-grid fade-in">
+      @for (user of users(); track user.id) {
+        <mat-card class="user-card" (click)="viewUser(user)">
+          <mat-card-content>
+            <!-- Avatar -->
+            <div class="user-avatar">
+              <mat-icon>account_circle</mat-icon>
+            </div>
+
+            <!-- Información principal -->
+            <div class="user-info">
+              <h3 class="user-name">{{ getFullName(user) }}</h3>
+              
+              <div class="user-detail">
+                <mat-icon class="detail-icon">email</mat-icon>
+                <a [href]="'mailto:' + user.email" (click)="$event.stopPropagation()" class="detail-text">
+                  {{ user.email }}
+                </a>
+              </div>
+
+              <div class="user-detail">
+                <mat-icon class="detail-icon">phone</mat-icon>
+                <a [href]="'tel:' + user.telefono" (click)="$event.stopPropagation()" class="detail-text">
+                  {{ user.telefono }}
+                </a>
+              </div>
+
+              <div class="user-detail">
+                <mat-icon class="detail-icon">cake</mat-icon>
+                <span class="detail-text">{{ formatDate(user.fechaNacimiento) }}</span>
+              </div>
+            </div>
+
+            <!-- Acciones -->
+            <div class="user-actions">
+              <button
+                mat-icon-button
+                color="primary"
+                matTooltip="Ver detalle"
+                (click)="viewUser(user); $event.stopPropagation()">
+                <mat-icon>visibility</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                color="accent"
+                matTooltip="Editar usuario"
+                (click)="editUser(user, $event)">
+                <mat-icon>edit</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                color="warn"
+                matTooltip="Eliminar usuario"
+                (click)="deleteUser(user, $event)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  }
+
+  <!-- Botón flotante para crear usuario -->
+  @if (hasUsers()) {
+    <button
+      mat-fab
+      color="accent"
+      class="fab-button"
+      matTooltip="Crear nuevo usuario"
+      (click)="createUser()">
+      <mat-icon>add</mat-icon>
+    </button>
+  }
+</div>
