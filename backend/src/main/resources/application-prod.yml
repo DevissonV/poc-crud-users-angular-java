@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    com.crud.users: INFO
+    org.springframework.web: WARN
+
+server:
+  error:
+    include-stacktrace: never
+    include-message: always
