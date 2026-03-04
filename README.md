@@ -1,283 +1,165 @@
-# CRUD de Usuarios - Angular
+# CRUD Users - Full-Stack Monorepo
 
-Una aplicación moderna de gestión de usuarios construida con Angular 17+, utilizando Standalone Components, Signals para reactividad, y Angular Material para la interfaz de usuario. Los datos se persisten en localStorage del navegador, ideal para pruebas de concepto y aprendizaje.
+Aplicación full-stack para gestión de usuarios con **Angular 18** (frontend) y **Spring Boot 3 + SQLite** (backend), siguiendo **Clean Architecture** y completamente dockerizada para máxima portabilidad.
 
-## 📋 Características
+## 🏗️ Arquitectura del Proyecto
 
-- ✅ **CRUD Completo**: Crear, leer, actualizar y eliminar usuarios
-- 🎨 **UI Moderna**: Interfaz Material Design con Angular Material
-- ⚡ **Reactividad**: Uso de Signals de Angular para estado reactivo
-- 💾 **Persistencia Local**: Almacenamiento en localStorage del navegador
-- 📱 **Responsive**: Diseño adaptable a móviles, tablets y desktop
-- ✨ **Standalone Components**: Arquitectura moderna sin NgModules
-- 🧪 **Pruebas Unitarias**: Cobertura completa de servicios principales
-- 📖 **Documentación JSDoc**: Código completamente documentado
-- ♿ **Accesibilidad**: Componentes accesibles con ARIA labels
-
-## 🚀 Tecnologías
-
-- **Angular 17+**: Framework principal
-- **TypeScript**: Lenguaje de programación
-- **Angular Material 21**: Componentes de UI
-- **Signals**: Sistema de reactividad de Angular
-- **RxJS**: Para operaciones asíncronas
-- **Jest**: Framework de pruebas
-- **SCSS**: Preprocesador CSS
-
-## 📁 Estructura del Proyecto
+Este es un **monorepo** profesional con separación clara entre frontend y backend:
 
 ```
-src/app/
-├── core/                           # Módulo core de la aplicación
-│   ├── models/                     # Modelos de datos
-│   │   └── user.model.ts           # Interface User y DTOs
-│   └── services/                   # Servicios compartidos
-│       └── user-storage.service.ts # Servicio de persistencia
-│
-├── features/                       # Módulos por funcionalidad
-│   └── users/                      # Feature de usuarios
-│       ├── components/             # Componentes del feature
-│       │   ├── user-list/         # Lista de usuarios
-│       │   ├── user-form/         # Formulario crear/editar
-│       │   └── user-detail/       # Detalle de usuario
-│       └── services/              # Servicios del feature
-│           └── user.service.ts    # Lógica de negocio
-│
-├── shared/                        # Recursos compartidos
-│   ├── components/                # Componentes reutilizables
-│   └── pipes/                     # Pipes personalizados
-│
-├── app.ts                         # Componente raíz
-├── app.config.ts                  # Configuración de la app
-└── app.routes.ts                  # Configuración de rutas
+crud-users-monorepo/
+├── frontend/           # Angular 18 (SPA)
+│   ├── src/
+│   ├── Dockerfile
+│   ├── nginx.conf
+│   └── README.md
+├── backend/            # Spring Boot 3 + SQLite (REST API)
+│   ├── src/
+│   ├── Dockerfile
+│   ├── pom.xml
+│   └── README.md
+├── docker-compose.yml  # Orquestación completa
+└── README.md          # Este archivo
 ```
 
-## 🛠️ Instalación
+### Diagrama de Arquitectura
 
-### Requisitos Previos
+```
+┌─────────────────┐
+│   Frontend      │
+│   (Angular 18)  │
+│   Port: 80      │
+│   + Nginx       │
+└────────┬────────┘
+         │ HTTP/REST
+         ▼
+┌─────────────────┐
+│   Backend       │
+│   (Spring Boot) │
+│   Port: 8080    │
+│   + Clean Arch  │
+└────────┬────────┘
+         │ JPA
+         ▼
+┌─────────────────┐
+│   SQLite DB     │
+│   (users.db)    │
+│   Volume persis.│
+└─────────────────┘
+```
 
-- Node.js (v18 o superior)
-- npm (v9 o superior)
+## 🚀 Quick Start con Docker
 
-### Pasos de Instalación
+**Requisito único:** Docker + Docker Compose instalados
 
-1. **Instalar dependencias**
-   ```bash
-   npm install
-   ```
-
-2. **Iniciar servidor de desarrollo**
-   ```bash
-   npm start
-   # o
-   ng serve
-   ```
-
-3. **Abrir en el navegador**
-   ```
-   http://localhost:4200
-   ```
-
-## 📖 Uso
-
-### Listar Usuarios
-
-La página principal muestra todos los usuarios registrados en una tabla Material. Puedes hacer clic en cualquier fila para ver el detalle del usuario.
-
-### Crear Usuario
-
-1. Haz clic en el botón flotante **+** (esquina inferior derecha)
-2. Completa todos los campos del formulario:
-   - **Nombre**: Mínimo 2 caracteres
-   - **Apellido**: Mínimo 2 caracteres
-   - **Email**: Debe ser un email válido y único
-   - **Teléfono**: Formato colombiano (ej: +57 300 123 4567)
-   - **Fecha de Nacimiento**: No puede ser futura
-3. Haz clic en **Crear**
-
-### Editar Usuario
-
-1. En la lista de usuarios, haz clic en el botón **editar** (icono de lápiz)
-2. Modifica los campos deseados
-3. Haz clic en **Actualizar**
-
-### Ver Detalle
-
-1. Haz clic en cualquier fila de la tabla
-2. Se mostrará toda la información del usuario
-3. Puedes copiar email o teléfono al portapapeles
-
-### Eliminar Usuario
-
-1. En la lista o en el detalle, haz clic en el botón **eliminar** (icono de papelera)
-2. Confirma la eliminación en el diálogo
-
-## 🧪 Pruebas
-
-### Ejecutar Pruebas Unitarias
+### Levantar toda la aplicación
 
 ```bash
-npm test
-# o
-ng test
+# Clonar repositorio
+git clone <repo-url>
+cd crud-users-monorepo
+
+# Construir y ejecutar con Docker Compose
+docker-compose up --build
+
+# O en modo detached (segundo plano)
+docker-compose up -d --build
 ```
 
-### Ejecutar Pruebas con Cobertura
+### Acceder a la aplicación
+
+- **Frontend (Angular)**: http://localhost
+- **Backend API**: http://localhost:8080/api/users
+- **Swagger UI**: http://localhost:8080/swagger-ui.html
+- **OpenAPI Docs**: http://localhost:8080/api-docs
+- **Health Check**: http://localhost:8080/actuator/health
+
+## 💻 Desarrollo Local (sin Docker)
+
+### Backend (Spring Boot)
 
 ```bash
-ng test --code-coverage
+cd backend
+
+# Ejecutar con Maven wrapper
+./mvnw spring-boot:run
+
+# Ejecutar tests
+./mvnw test
 ```
 
-Los reportes de cobertura se generan en `coverage/`
+**Requisitos:** Java 21 (JDK) + Maven 3.9+
 
-### Pruebas Implementadas
+**URL Backend local:** http://localhost:8080
 
-- ✅ **UserStorageService**: Operaciones CRUD, serialización de fechas
-- ✅ **UserService**: Lógica de negocio, validaciones, Signals
-- ✅ **AppComponent**: Renderización del layout
-
-## 🏗️ Arquitectura
-
-### Patrón de Diseño
-
-El proyecto sigue una arquitectura en capas:
-
-1. **Capa de Presentación**: Componentes (user-list, user-form, user-detail)
-2. **Capa de Lógica de Negocio**: UserService
-3. **Capa de Persistencia**: UserStorageService
-
-### Flujo de Datos
-
-```
-Component → UserService → UserStorageService → localStorage
-                ↓ (Signals)
-             Component (auto-actualización)
-```
-
-### Signals vs RxJS
-
-- **Signals**: Para estado local y reactividad automática
-- **RxJS**: Para operaciones asíncronas y eventos complejos
-
-## 📚 Conceptos de Angular para Aprender
-
-### 1. Standalone Components
-
-```typescript
-@Component({
-  selector: 'app-user-list',
-  standalone: true,  // ← Sin NgModules
-  imports: [CommonModule, MatTableModule],
-  templateUrl: './user-list.component.html'
-})
-```
-
-### 2. Signals
-
-```typescript
-// Signal privado
-private readonly usersSignal = signal<User[]>([]);
-
-// Signal público de solo lectura
-readonly users = this.usersSignal.asReadonly();
-
-// Signal computado
-readonly userCount = computed(() => this.users().length);
-```
-
-### 3. Inject Function
-
-```typescript
-// Inyección moderna (sin constructor)
-private readonly userService = inject(UserService);
-private readonly router = inject(Router);
-```
-
-### 4. Control Flow Syntax
-
-```html
-<!-- Nueva sintaxis @if -->
-@if (hasUsers()) {
-  <div>Hay usuarios</div>
-} @else {
-  <div>No hay usuarios</div>
-}
-
-<!-- Nueva sintaxis @for -->
-@for (user of users(); track user.id) {
-  <div>{{ user.nombre }}</div>
-}
-```
-
-### 5. Reactive Forms
-
-```typescript
-userForm = this.fb.group({
-  nombre: ['', [Validators.required, Validators.minLength(2)]],
-  email: ['', [Validators.required, Validators.email]]
-});
-```
-
-### 6. Lazy Loading
-
-```typescript
-{
-  path: 'users',
-  loadComponent: () => import('./user-list.component')
-    .then(m => m.UserListComponent)
-}
-```
-
-## 🎨 Personalización
-
-### Cambiar Tema de Material
-
-Edita `src/styles.scss`:
-
-```scss
-$crud-users-primary: mat.m2-define-palette(mat.$m2-blue-palette);
-$crud-users-accent: mat.m2-define-palette(mat.$m2-amber-palette);
-```
-
-### Agregar Nuevos Campos
-
-1. Actualiza `User` interface en `user.model.ts`
-2. Modifica `UserFormComponent` para incluir el campo
-3. Actualiza `UserListComponent` y `UserDetailComponent`
-
-## 🐛 Solución de Problemas
-
-### Los datos no persisten al recargar
-
-- Verifica que tu navegador permita localStorage
-- Abre DevTools → Application → Local Storage
-- Busca la clave `angular-users`
-
-### Error al compilar
+### Frontend (Angular)
 
 ```bash
-# Limpiar caché
-rm -rf node_modules
+cd frontend
+
+# Instalar dependencias
 npm install
+
+# Ejecutar servidor de desarrollo
+npm start
+
+# Ejecutar tests
+npm test
 ```
 
-## 📝 Mejoras Futuras
+**Requisitos:** Node.js 20+ + npm 10+
 
-- [ ] Agregar búsqueda y filtros en la lista
-- [ ] Paginación para grandes cantidades de usuarios
-- [ ] Exportar/Importar datos (JSON, CSV)
-- [ ] Modo oscuro
-- [ ] Internacionalización (i18n)
-- [ ] PWA capabilities
-- [ ] Integración con backend real
+**URL Frontend local:** http://localhost:4200
+
+## 📋 Documentación Completa
+
+- [📖 README del Backend](backend/README.md) - Clean Architecture, API endpoints
+- [📖 README del Frontend](frontend/README.md) - Arquitectura Angular, componentes
+- [📊 Swagger UI](http://localhost:8080/swagger-ui.html) - Documentación interactiva API
+
+## 🏛️ Arquitectura Técnica
+
+### Backend - Clean Architecture
+
+4 capas independientes:
+1. **Domain**: Entidades puras sin dependencias
+2. **Application**: DTOs, casos de uso, lógica de negocio
+3. **Infrastructure**: JPA, SQLite, configuraciones
+4. **Presentation**: REST controllers, excepciones
+
+### Frontend - Angular Standalone
+
+- Angular 18 con Standalone Components
+- Signals para reactividad
+- TypeScript estricto
+- SCSS modular
+
+### Base de Datos - SQLite
+
+- BD embebida en archivo único
+- Cero configuración
+- Persistencia en Docker volumes
+
+## 🧪 Testing
+
+```bash
+# Backend
+cd backend && ./mvnw test
+
+# Frontend
+cd frontend && npm test
+```
+
+## 📦 Tecnologías
+
+**Backend:** Java 21, Spring Boot 3, SQLite, Maven
+**Frontend:** Angular 18, TypeScript, Signals, SCSS
+**DevOps:** Docker, Docker Compose, Nginx
 
 ## 📄 Licencia
 
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+MIT License
 
 ---
 
-**¡Disfruta aprendiendo Angular!** 🚀
-
-Para más información sobre Angular CLI: [Angular CLI Overview](https://angular.dev/tools/cli)
-# poc-list-skills-angular
+**Stack:** Angular 18 + Spring Boot 3 + SQLite + Docker + Clean Architecture

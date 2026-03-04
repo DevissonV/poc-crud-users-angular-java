@@ -1,45 +1,50 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Backend (Java/Maven)
+backend/target/
+backend/*.db
+backend/*.db-journal
+backend/*.db-shm
+backend/*.db-wal
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# Frontend (Angular/Node)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/coverage/
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
-
-# IDEs and editors
+# IDEs
+.vscode/
 .idea/
-.project
-.classpath
-.c9/
-*.launch
+*.iml
+*.swp
+*.swo
+*.iws
+*.ipr
 .settings/
-*.sublime-workspace
+.classpath
+.project
+.factorypath
 
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/mcp.json
-!.vscode/skills/
-.history/*
-
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
-
-# System files
+# OS
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Docker
+docker-compose.override.yml
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+
+# Database
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
